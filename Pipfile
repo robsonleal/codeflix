@@ -10,6 +10,8 @@ django-environ = "*"
 gunicorn = "*"
 whitenoise = "*"
 djangorestframework = "*"
+pyjwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 pycodestyle = "*"
