@@ -9,8 +9,10 @@ psycopg2 = "*"
 django-environ = "*"
 gunicorn = "*"
 whitenoise = "*"
+djangorestframework = "*"
 
 [dev-packages]
+pycodestyle = "*"
 
 [requires]
 python_version = "3.10"
