@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseURL: "http://127.0.0.1:8000/",
+  authURL: "http://127.0.0.1:8000/api/auth/jwt/create/",
+  appURL: "http://127.0.0.1:8000/app/"
 };
 
 /*
