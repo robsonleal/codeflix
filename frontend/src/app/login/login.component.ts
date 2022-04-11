@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../service/login.service';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +10,14 @@ import { LoginService } from '../service/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  form!: FormGroup
+  form!: FormGroup;
+  message: string = '';
+  type: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private loginService: LoginService,
+    private apiService: ApiService,
     private router: Router
   ) { }
 
@@ -27,6 +29,14 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.loginService.login(this.form.getRawValue())
+    this.apiService.login(this.form.getRawValue())
+      .subscribe(data => {
+        let obj_data = JSON.parse(JSON.stringify(data));
+        localStorage.setItem('token', obj_data.access);
+        this.router.navigate(['/']);
+      }, error => {
+        this.type = 'danger';
+        this.message = 'Usuário inválido!';
+      });
   }
 }
