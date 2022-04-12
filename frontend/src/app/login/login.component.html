@@ -1,18 +1,20 @@
-<form [formGroup]="form" (submit)="submit()">
-    <h1 class="h3 mb-3 text-center">Faça seu login</h1>
+<main class="form-signin">
+    <form [formGroup]="form" (submit)="submit()">
+        <h1 class="h3 mb-3 text-center">Faça seu login</h1>
 
-    <div class="form-floating">
-        <input formControlName="username" type="email" class="form-control" placeholder="Nome de usuário">
-        <label for="floatingInput">Nome de usuário</label>
+        <div class="form-floating">
+            <input formControlName="username" type="email" class="form-control" placeholder="Nome de usuário">
+            <label for="floatingInput">Nome de usuário</label>
+        </div>
+        <div class="form-floating">
+            <input formControlName="password" type="password" class="form-control" placeholder="Senha">
+            <label for="floatingPassword">Senha</label>
+        </div>
+
+        <button class="btn-lg btn-primary w-100 btn mt-4 text-uppercase" type="submit">Entrar</button>
+    </form>
+
+    <div *ngIf="message" class="alert alert-{{ type }} mt-4" role="alert">
+        {{ message }}
     </div>
-    <div class="form-floating">
-        <input formControlName="password" type="password" class="form-control" placeholder="Senha">
-        <label for="floatingPassword">Senha</label>
-    </div>
-
-    <button class="btn-lg btn-primary w-100 btn mt-4 text-uppercase" type="submit">Entrar</button>
-</form>
-
-<div *ngIf="message" class="alert alert-{{ type }} mt-4" role="alert">
-    {{ message }}
-</div>
+</main>
