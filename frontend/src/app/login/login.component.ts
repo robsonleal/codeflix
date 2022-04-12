@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { Emitters } from '../emitters/emitters';
 
 @Component({
   selector: 'app-login',
@@ -33,10 +34,12 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         let obj_data = JSON.parse(JSON.stringify(data));
         localStorage.setItem('token', obj_data.access);
+        Emitters.authEmitter.emit(true);
         this.router.navigate(['/']);
       }, error => {
         this.type = 'danger';
         this.message = 'Usuário inválido!';
+        Emitters.authEmitter.emit(false);
       });
   }
 }

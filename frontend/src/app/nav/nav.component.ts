@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Emitters } from '../emitters/emitters';
 
 @Component({
   selector: 'app-nav',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  authenticated = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    Emitters.authEmitter.subscribe(
+      (auth: boolean) => {
+        this.authenticated = auth;
+      }
+    );
   }
 
 }
