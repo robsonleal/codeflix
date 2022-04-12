@@ -29,8 +29,12 @@ export class ApiService {
     return this.http.get(this.modulesURL)
   }
 
+  getModule(idModule: string) {
+    return this.http.get(this.modulesURL + `${idModule}/`)
+  }
+
   getClassesbyModule(idModule: string) {
-    return this.http.get(this.modulesURL + `${idModule}/aulas`)
+    return this.http.get(this.modulesURL + `${idModule}/aulas/`)
   }
 
 }

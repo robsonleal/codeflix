@@ -1,19 +1,28 @@
-<main class="container">
-    <h1>Aulas do módulo</h1>
-    <div class="row">
-        <div *ngFor="let item of currentClasses" class="col-sm-6 mb-5">
-            <div class="card">
-                <div class="card-header text-center">
-                    {{ item.name }}
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{{ item.description.slice(0,150) }}...</p>
-                    <a class="btn btn-primary text-uppercase">Detalhes</a>
-                </div>
-                <div class="card-footer text-muted text-center">
-                    2 aulas | 180 minutos
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-4">
+            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+                <h2 class="mb-1 border-bottom">Aulas disponíveis</h2>
+                <small class="text-muted">Total de aulas: {{ currentClasses.length }}</small>
+                <div class="list-group list-group-flush border-bottom scrollarea">
+                    <a *ngFor="let class of currentClasses" href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <strong class="mb-1">{{ class.name }}</strong>
+                            <small class="text-muted">{{ class.duration }}min</small>
+                        </div>
+                        <div class="col-12 mb-1 small">{{ class.description.slice(0,150) }}</div>
+                    </a>
                 </div>
             </div>
         </div>
+        <div class="col-8 bg-dark text-secondary px-4 py-5 text-center">
+            <h1 class="display-5 fw-bold text-white">{{ currentModule.name }}</h1>
+            <div>
+                <p class="fs-5 mb-4 p-5">{{ currentModule.description }}</p>
+                <button class="btn btn-outline-light p-3" type="button"><< Escolha uma aula</button>
+            </div>
+        </div>
     </div>
-</main>
+</div>
+
+    
