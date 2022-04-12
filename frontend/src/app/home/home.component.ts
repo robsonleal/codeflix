@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,5 +30,10 @@ export class HomeComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  moduleDetail(item: string) {
+    console.log(item)
+    this.router.navigate([`modulos/${item}/aulas`])
   }
 }
