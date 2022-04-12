@@ -1,25 +1,34 @@
-<main class="form-signin">
-    <form [formGroup]="form" (submit)="submit()">
-        <h1 class="h3 mb-3 text-center">Faça seu cadastro</h1>
-
-        <div class="form-floating">
-            <input formControlName="username" type="text" class="form-control" placeholder="Nome de usuario">
-            <label for="floatingInput">Nome de usuário</label>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-md-10 mx-auto col-lg-5">
+            <div *ngIf="message" class="alert alert-{{ type }} mt-2 text-center" role="alert">
+                {{ message }}
+            </div>
+            <form [formGroup]="form" (submit)="submit()" class="p-4 p-md-5 border rounded-3 bg-light">
+                <div class="form-floating mb-3">
+                    <input formControlName="username" type="text" class="form-control" id="floatingInput"
+                        placeholder="Nome de usuário">
+                    <label for="floatingInput">Nome de usuário</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input formControlName="email" type="email" class="form-control" id="floatingInput"
+                        placeholder="E-mail">
+                    <label for="floatingInput">E-mail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input formControlName="password" type="password" class="form-control" id="floatingPassword"
+                        placeholder="Senha">
+                    <label for="floatingPassword">Senha</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-dark text-uppercase" type="submit">Cadastrar</button>
+                <hr class="my-4">
+                <small class="text-muted">Já tem cadastro? <a class="link" routerLink="/login">Click
+                        aqui</a></small>
+            </form>
         </div>
-        <div class="form-floating">
-            <input formControlName="email" type="email" class="form-control" placeholder="Email">
-            <label for="floatingInput">Email</label>
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Faça seu cadastro!</h1>
+            <p class="col-lg-10 fs-4">Preencha seus dados rapidamente e tenha acesso a todos os recursos da aplicação.</p>
         </div>
-        <div class="form-floating">
-            <input formControlName="password" type="password" class="form-control" placeholder="Senha">
-            <label for="floatingInput">Senha</label>
-        </div>
-
-        <button class="btn btn-lg btn-primary w-100 mt-4 text-uppercase" type="submit">Cadastrar</button>
-
-    </form>
-
-    <div *ngIf="message" class="alert alert-{{ type }} mt-4" role="alert">
-        {{ message }}
     </div>
-</main>
+</div>
