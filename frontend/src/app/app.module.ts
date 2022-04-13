@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ClassListComponent } from './class-list/class-list.component';
 import { ListModuleDetailComponent } from './list-detail/list-module-detail.component';
 import { ListClassDetailComponent } from './list-detail/list-class-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfoModalComponent } from './shared/info-modal/info-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,17 @@ import { ListClassDetailComponent } from './list-detail/list-class-detail.compon
     NavComponent,
     ClassListComponent,
     ListModuleDetailComponent,
-    ListClassDetailComponent
+    ListClassDetailComponent,
+    InfoModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
