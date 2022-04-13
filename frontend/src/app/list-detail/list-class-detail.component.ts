@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
+import { AlertModalService } from '../shared/alert-modal.service';
 
 @Component({
   selector: 'app-list-detail',
@@ -9,9 +10,12 @@ import { ApiService } from '../service/api.service';
 export class ListClassDetailComponent implements OnInit {
   object_name: string = '';
   objects: any;
+  currentObject: any;
+  currentIndex: any;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private alertModalService: AlertModalService
   ) { }
 
   ngOnInit(): void {
@@ -31,4 +35,13 @@ export class ListClassDetailComponent implements OnInit {
         });
   }
 
+  openInfo(id: any) {
+    this.alertModalService.showInfo(id)
+  }
+
+  setActiveObject(object: any, index: any): void {
+    this.currentObject = object;
+    this.currentIndex = index;
+    console.log(object)
+  }
 }

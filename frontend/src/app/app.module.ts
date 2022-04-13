@@ -13,7 +13,6 @@ import { ClassListComponent } from './class-list/class-list.component';
 import { ListModuleDetailComponent } from './list-detail/list-module-detail.component';
 import { ListClassDetailComponent } from './list-detail/list-class-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InfoModalComponent } from './shared/info-modal/info-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
@@ -25,8 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     NavComponent,
     ClassListComponent,
     ListModuleDetailComponent,
-    ListClassDetailComponent,
-    InfoModalComponent
+    ListClassDetailComponent
   ],
   imports: [
     BrowserModule,

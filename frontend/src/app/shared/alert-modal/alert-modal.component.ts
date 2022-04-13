@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertTypes } from '../alert-modal.service';
 
 @Component({
   selector: 'app-alert-modal',
@@ -7,8 +8,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./alert-modal.component.css']
 })
 export class AlertModalComponent implements OnInit {
-  message: string = 'Oi, eu sou um alerta!';
-  type: string = 'success';
+  message: string = 'Erro! mensagem não informada!';
+  type: AlertTypes = AlertTypes.DANGER;
 
   constructor(
     private bsModalRef: BsModalRef
@@ -20,5 +21,4 @@ export class AlertModalComponent implements OnInit {
   onClose() {
     this.bsModalRef.hide()
   }
-
 }

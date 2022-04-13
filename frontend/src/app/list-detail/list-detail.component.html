@@ -1,28 +1,53 @@
 <div class="container">
-    <div class="d-flex w-100 border-bottom mb-3 align-items-center justify-content-between">
-        <h2 class="mb-3 ">{{ object_name }}</h2>
-        <button type="button" class="btn btn-outline-dark"><i class="bi bi-pencil-square"></i> Adicionar</button>
-    </div>
-    <table class="table table-dark table-hover">
-        <thead>
-            <tr>
-                <th class="col-1" scope="col">#</th>
-                <th class="col-7" scope="col">Nome</th>
-                <th class="col-4 text-center" scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="align-middle" *ngFor="let object of objects; let i = index">
-                <th scope="row">{{ i + 1 }}</th>
-                <td class="">{{ object.name }}</td>
-                <td class="text-center">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" class="btn btn-outline-light"><i class="bi bi-info-square"></i> Info</button>
+    <div class="row">
+        <div class="d-flex w-100 border-bottom mb-3 align-items-center justify-content-between">
+            <h2 class="mb-3 ">{{ object_name }}</h2>
+            <button type="button" class="btn btn-outline-dark"><i class="bi bi-pencil-square"></i> Adicionar</button>
+        </div>
+        <div class="col-6">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-2" scope="col">#</th>
+                        <th class="col-10" scope="col">Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="align-middle" *ngFor="let object of objects; let i = index" [class.active]="i == currentIndex" (click)="setActiveObject(object, i)">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td class="">{{ object.name }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="card text-white bg-dark mb-3" *ngIf="currentObject">
+                <div class="card-header">
+                    <h3 class="text-center p-3">{{ currentObject.name }}</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Descrição</h5>
+                    <p class="card-text fs-5 mb-4 p-3">{{ currentObject.description }}</p>
+                    <div *ngIf="currentObject.module">
+                        <h5 class="card-title">Módulo</h5>
+                        <p class="card-text fs-5 mb-4 p-3">{{ currentObject.module }}</p>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <h5 class="card-title">Duração</h5>
+                                <p class="card-text fs-5 mb-4 p-3">{{ currentObject.duration }} minutos</p>
+                            </div>
+                            <div class="col-6">
+                                <h5 class="card-title">Data da aula</h5>
+                                <p class="card-text fs-5 mb-4 p-3">{{ currentObject.date_class }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-group w-100" role="group" aria-label="Basic mixed styles example">
                         <button type="button" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Editar</button>
                         <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i> Deletar</button>
                     </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
