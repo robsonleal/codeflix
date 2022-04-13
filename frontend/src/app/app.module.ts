@@ -10,6 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ClassListComponent } from './class-list/class-list.component';
+import { ListModuleDetailComponent } from './list-detail/list-module-detail.component';
+import { ListClassDetailComponent } from './list-detail/list-class-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ClassListComponent } from './class-list/class-list.component';
     LoginComponent,
     HomeComponent,
     NavComponent,
-    ClassListComponent
+    ClassListComponent,
+    ListModuleDetailComponent,
+    ListClassDetailComponent
   ],
   imports: [
     BrowserModule,

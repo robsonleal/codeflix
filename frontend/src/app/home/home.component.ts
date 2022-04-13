@@ -16,10 +16,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.retrieveCroploss()
+    this.retrieveModule()
   }
 
-  retrieveCroploss(): void {
+  retrieveModule(): void {
     this.apiService.getModules()
     .subscribe(
       data => {

@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 export class ApiService {
   private readonly authURL = environment['authURL'];
   private readonly registerURL = environment['baseURL'] + 'api/users/';
-  private readonly modulesURL = environment['modulesURL'];
+  private readonly modulesURL = environment['baseURL'] + 'modulos/';
+  private readonly classesURL = environment['baseURL'] + 'aulas/';
 
   constructor(
     private http: HttpClient,
@@ -31,6 +32,10 @@ export class ApiService {
 
   getModule(idModule: string) {
     return this.http.get(this.modulesURL + `${idModule}/`)
+  }
+
+  getClasses() {
+    return this.http.get(this.classesURL)
   }
 
   getClassesbyModule(idModule: string) {
