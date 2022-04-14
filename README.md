@@ -56,7 +56,6 @@ https://user-images.githubusercontent.com/27708175/163450594-c68ef7d3-3fdc-467a-
 ## Abrir e rodar o projeto localmente
 
 #### Requisitos
-- Shel do Linux;
 - Python Versão 3
 - Pipenv
 
