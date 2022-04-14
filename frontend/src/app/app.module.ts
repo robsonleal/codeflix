@@ -14,6 +14,12 @@ import { ListModuleDetailComponent } from './list-detail/list-module-detail.comp
 import { ListClassDetailComponent } from './list-detail/list-class-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddComponent } from './add/add.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -24,7 +30,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     NavComponent,
     ClassListComponent,
     ListModuleDetailComponent,
-    ListClassDetailComponent
+    ListClassDetailComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +41,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["127.0.0.1:8000"],
+        disallowedRoutes: ["http://127.0.0.1:8000/auth/jwt/create"],
+      },
+    }), 
   ],
   providers: [],
   bootstrap: [AppComponent]

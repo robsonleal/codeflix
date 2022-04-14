@@ -16,6 +16,7 @@ const routes: Routes = [
   //private urls
   { path: 'modulos', component: ListModuleDetailComponent },
   { path: 'aulas', component: ListClassDetailComponent },
+  { path: 'adicionar', component: ListClassDetailComponent },
 ];
 
 @NgModule({

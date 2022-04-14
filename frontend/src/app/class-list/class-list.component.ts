@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../service/api.service';
+import { JwtService } from '../service/jwt.service';
 
 @Component({
   selector: 'app-class-list',
@@ -8,12 +8,12 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./class-list.component.css']
 })
 export class ClassListComponent implements OnInit {
-  currentClasses: any;
   currentModule: any;
+  currentClassesByModule: any;
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private jwtService: JwtService
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class ClassListComponent implements OnInit {
   }
 
   getModule(id: string): void {
-    this.apiService.getModule(id)
+    this.jwtService.getModule(id)
       .subscribe(
         data => {
           this.currentModule = data;
@@ -33,10 +33,10 @@ export class ClassListComponent implements OnInit {
   }
 
   getClassesByModule(id: string): void {
-    this.apiService.getClassesbyModule(id)
+    this.jwtService.getClassesbyModule(id)
       .subscribe(
         data => {
-          this.currentClasses = data;
+          this.currentClassesByModule = data;
           console.log(data);
         }, error => {
           console.log(error);

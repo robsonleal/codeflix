@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ApiService } from '../service/api.service';
+import { JwtService } from '../service/jwt.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private apiService: ApiService,
+    private jwtService: JwtService,
     private http: HttpClient,
     private router: Router,
   ) { }
@@ -30,9 +30,9 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void {
-    this.apiService.register(this.form.getRawValue())
+    this.jwtService.register(this.form.getRawValue())
     .subscribe(data => {
-      this.router.navigate(['/login']);
+      console.log(data)
     }, error => {
       this.type = 'danger'
       this.message = 'Erro ao fazer o registro!';

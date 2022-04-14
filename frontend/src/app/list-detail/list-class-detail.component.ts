@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+import { JwtService } from '../service/jwt.service';
 import { AlertModalService } from '../shared/alert-modal.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class ListClassDetailComponent implements OnInit {
   currentIndex: any;
 
   constructor(
-    private apiService: ApiService,
+    private jwtService: JwtService,
     private alertModalService: AlertModalService
   ) { }
 
@@ -24,7 +24,7 @@ export class ListClassDetailComponent implements OnInit {
   }
 
   getModule(): void {
-    this.apiService.getClasses()
+    this.jwtService.getAllClasses()
       .subscribe(
         data => {
           this.objects = data;
@@ -42,6 +42,14 @@ export class ListClassDetailComponent implements OnInit {
   setActiveObject(object: any, index: any): void {
     this.currentObject = object;
     this.currentIndex = index;
-    console.log(object)
   }
+
+  /*deleteObject() {
+    this.jwtService.delete(this.object_name.toLowerCase(), this.currentObject.id)
+      .subscribe(data => {
+        console.log(data)
+      }, error => {
+        console.log(error)
+      });
+  }*/
 }

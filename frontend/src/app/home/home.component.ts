@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+import { JwtService } from '../service/jwt.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   module: any;
 
   constructor(
-    private apiService: ApiService,
+    private jwtService: JwtService,
     private router: Router
   ) { }
 
@@ -20,12 +20,11 @@ export class HomeComponent implements OnInit {
   }
 
   retrieveModule(): void {
-    this.apiService.getModules()
+    this.jwtService.getAllModules()
     .subscribe(
       data => {
         this.module = data;
         console.log(data);
-        console.log(this.module)
       },
       error => {
         console.log(error);
