@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Emitters } from '../emitters/emitters';
+import { JwtService } from '../service/jwt.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +10,9 @@ import { Emitters } from '../emitters/emitters';
 export class NavComponent implements OnInit {
   authenticated = false;
 
-  constructor() { }
+  constructor(
+    private jwtService: JwtService
+  ) { }
 
   ngOnInit(): void {
     Emitters.authEmitter.subscribe(
@@ -19,4 +22,7 @@ export class NavComponent implements OnInit {
     );
   }
 
+  logout() {
+    this.jwtService.logout()
+  }
 }

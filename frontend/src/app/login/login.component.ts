@@ -35,17 +35,5 @@ export class LoginComponent implements OnInit {
     }, err => {
       console.log(err)
     });
-    
-    /*this.apiService.login(this.form.getRawValue())
-      .subscribe(data => {
-        let obj_data = JSON.parse(JSON.stringify(data));
-        localStorage.setItem('token', obj_data.access);
-        Emitters.authEmitter.emit(true);
-        
-      }, error => {
-        this.type = 'danger';
-        this.message = 'Usuário inválido!';
-        Emitters.authEmitter.emit(false);
-      });*/
   }
 }

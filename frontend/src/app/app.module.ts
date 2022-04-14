@@ -14,7 +14,8 @@ import { ListModuleDetailComponent } from './list-detail/list-module-detail.comp
 import { ListClassDetailComponent } from './list-detail/list-class-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { AddComponent } from './add/add.component';
+import { AddComponent } from './add-edit/add.component';
+import { EditComponent } from './add-edit/edit.component';
 import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
@@ -31,7 +32,8 @@ export function tokenGetter() {
     ClassListComponent,
     ListModuleDetailComponent,
     ListClassDetailComponent,
-    AddComponent
+    AddComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

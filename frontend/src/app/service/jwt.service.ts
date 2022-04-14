@@ -21,8 +21,11 @@ export class JwtService {
     private router: Router
   ) { }
 
-  public get loggedIn(): boolean {
-    return localStorage.getItem('token') !== null;
+  loggedIn(): boolean {
+    if (localStorage.getItem('token')) {
+      Emitters.authEmitter.emit(true);
+      return true
+    } else return false
   }
 
   login(form: any) {
@@ -41,7 +44,14 @@ export class JwtService {
 
   logout() {
     Emitters.authEmitter.emit(false);
+    this.router.navigate(['/login']);
     localStorage.removeItem('token');
+  }
+
+  add(form: any, object: string) {
+    return this.http.post(`${this.baseURL}${object}/`, form).pipe(tap(res => {
+      console.log(res)
+    }))
   }
 
   getAllModules() {
@@ -56,9 +66,20 @@ export class JwtService {
     return this.http.get(this.modulesURL + `${idModule}/`)
   }
 
+  getClass(idModule: string) {
+    return this.http.get(this.classesURL + `${idModule}/`)
+  }
 
   getClassesbyModule(idModule: string) {
     return this.http.get(this.modulesURL + `${idModule}/aulas/`)
+  }
+
+  delete(object_name: string, object_id: string) {
+    return this.http.delete(`${this.baseURL}${object_name}/${object_id}`)
+  }
+
+  update(idObject: string, nameObject: string, data: any) {
+    return this.http.put(`${this.baseURL}${nameObject}/${idObject}/`, data);
   }
 
   /*ping() {
@@ -66,9 +87,5 @@ export class JwtService {
       (dados) => console.log(dados),
       (err) => console.log(err)
     );
-
-    delete(object_name: string, object_id: string) {
-    return this.http.delete(`${this.baseURL}${object_name}/${object_id}`)
-  }
   }*/
 }

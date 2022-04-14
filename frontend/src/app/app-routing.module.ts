@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { ClassListComponent } from './class-list/class-list.component';
 import { ListModuleDetailComponent } from './list-detail/list-module-detail.component';
 import { ListClassDetailComponent } from './list-detail/list-class-detail.component';
+import { AddComponent } from './add-edit/add.component';
+import { EditComponent } from './add-edit/edit.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: 'modulos', pathMatch: 'full' },
@@ -16,7 +18,8 @@ const routes: Routes = [
   //private urls
   { path: 'modulos', component: ListModuleDetailComponent },
   { path: 'aulas', component: ListClassDetailComponent },
-  { path: 'adicionar', component: ListClassDetailComponent },
+  { path: 'editar', component: EditComponent },
+  { path: 'add', component: AddComponent },
 ];
 
 @NgModule({

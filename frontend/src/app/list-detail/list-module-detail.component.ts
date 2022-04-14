@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtService } from '../service/jwt.service';
 import { AlertModalService } from '../shared/alert-modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-detail',
@@ -9,22 +10,27 @@ import { AlertModalService } from '../shared/alert-modal.service';
 })
 
 export class ListModuleDetailComponent implements OnInit {
-  object_name: string = '';
+  objectName: string = 'Módulos';
+  objectUrlName: string = 'modulos';
   objects: any;
   currentIndex: any;
   currentObject: any;
 
   constructor(
     private jwtService: JwtService,
+    private router: Router,
     private alertModalService: AlertModalService
   ) { }
 
   ngOnInit(): void {
-    this.object_name = 'Módulos';
-    this.getModule();
+    if (this.jwtService.loggedIn()) {
+      this.getAllModules();
+    } else {
+      console.error('Usuário não autenticado!')
+    }
   }
 
-  getModule(): void {
+  getAllModules(): void {
     this.jwtService.getAllModules()
       .subscribe(
         data => {
@@ -43,15 +49,23 @@ export class ListModuleDetailComponent implements OnInit {
   setActiveObject(object: any, index: any): void {
     this.currentObject = object;
     this.currentIndex = index;
-    console.log(object.name)
   }
 
-  /*deleteObject() {
-    this.jwtService.delete(this.object_name.toLowerCase(), this.currentObject.id)
+  deleteObject() {
+    this.jwtService.delete(this.objectUrlName, this.currentObject.id)
       .subscribe(data => {
         console.log(data)
+        this.getAllModules()
       }, error => {
         console.log(error)
       });
-  }*/
+  }
+
+  editObject() {
+    this.router.navigate(['/editar'], { queryParams: { object: 'modulos', id: this.currentObject.id }})
+  }
+
+  addObject() {
+    this.router.navigate(['/add'], { queryParams: { object: 'modulos' }});
+  }
 }
