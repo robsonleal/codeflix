@@ -55,13 +55,17 @@ https://user-images.githubusercontent.com/27708175/163450594-c68ef7d3-3fdc-467a-
 
 ## Abrir e rodar o projeto localmente
 
+#### Requisitos
+- Shel do Linux;
+- Python Versão 3
+- Pipenv
+
 ### Backend
 ```console
-git clone git@github.com:robsonleal/proagro_facil.git
-cd django-restapi
-python -m venv ./venv
-source venv/bin/activate
-pip install -r 'requirements.txt'
+git clone git@github.com:robsonleal/codeflix.git
+cd codeflix
+pipenv install
+pipenv shell
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser
