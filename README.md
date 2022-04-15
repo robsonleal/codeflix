@@ -51,7 +51,7 @@ https://user-images.githubusercontent.com/27708175/163450594-c68ef7d3-3fdc-467a-
 
 ## Acesso ao projeto - Deploy
 
-<a href="https://proagro-facil.herokuapp.com/"><img width="80" height="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original-wordmark.svg" /></a>
+<a href="https://codeflix-app.herokuapp.com/"><img width="80" height="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original-wordmark.svg" /></a>
 
 ## Abrir e rodar o projeto localmente
 
